@@ -17,7 +17,19 @@
 		B5D0EF012C3484E90070B60A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = B5D0EF002C3484E90070B60A /* SwiftyJSON */; };
 		B5D0EF042C3484F10070B60A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B5D0EF032C3484F10070B60A /* Alamofire */; };
 		B5D0EF082C3488670070B60A /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0EF072C3488670070B60A /* SearchBarView.swift */; };
-		B5D0EF0B2C34893B0070B60A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B5D0EF0A2C34893B0070B60A /* Lottie */; };
+		B5D0EF0D2C348B890070B60A /* MoviesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0EF0C2C348B890070B60A /* MoviesTableView.swift */; };
+		B5D0EF0F2C348BC60070B60A /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0EF0E2C348BC60070B60A /* MovieTableViewCell.swift */; };
+		B5D0EF122C348C080070B60A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B5D0EF112C348C080070B60A /* Lottie */; };
+		B5D0EF152C348C720070B60A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5D0EF142C348C720070B60A /* Kingfisher */; };
+		B5D0EF172C348D930070B60A /* PosterCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0EF162C348D930070B60A /* PosterCellView.swift */; };
+		B5D0EF212C348EE50070B60A /* Animation_3.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D0EF182C348EE50070B60A /* Animation_3.json */; };
+		B5D0EF222C348EE50070B60A /* Loading_1.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D0EF192C348EE50070B60A /* Loading_1.json */; };
+		B5D0EF232C348EE50070B60A /* Loading_2.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D0EF1A2C348EE50070B60A /* Loading_2.json */; };
+		B5D0EF242C348EE50070B60A /* Loading_Animation_1.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D0EF1B2C348EE50070B60A /* Loading_Animation_1.json */; };
+		B5D0EF252C348EE50070B60A /* Loading_Animation_2.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D0EF1C2C348EE50070B60A /* Loading_Animation_2.json */; };
+		B5D0EF262C348EE50070B60A /* Loading_Animation_3.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D0EF1D2C348EE50070B60A /* Loading_Animation_3.json */; };
+		B5D0EF272C348EE50070B60A /* Youtube_B_Animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D0EF1E2C348EE50070B60A /* Youtube_B_Animation.json */; };
+		B5D0EF282C348EE50070B60A /* Youtube_Button_Animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D0EF1F2C348EE50070B60A /* Youtube_Button_Animation.json */; };
 		B5DD1C962C344B14003893FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD1C952C344B14003893FE /* AppDelegate.swift */; };
 		B5DD1C982C344B14003893FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD1C972C344B14003893FE /* SceneDelegate.swift */; };
 		B5DD1C9A2C344B14003893FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD1C992C344B14003893FE /* ViewController.swift */; };
@@ -35,6 +47,17 @@
 		B5D0EEF22C3467BE0070B60A /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		B5D0EEF42C346B680070B60A /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		B5D0EF072C3488670070B60A /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		B5D0EF0C2C348B890070B60A /* MoviesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableView.swift; sourceTree = "<group>"; };
+		B5D0EF0E2C348BC60070B60A /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		B5D0EF162C348D930070B60A /* PosterCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCellView.swift; sourceTree = "<group>"; };
+		B5D0EF182C348EE50070B60A /* Animation_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Animation_3.json; sourceTree = "<group>"; };
+		B5D0EF192C348EE50070B60A /* Loading_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading_1.json; sourceTree = "<group>"; };
+		B5D0EF1A2C348EE50070B60A /* Loading_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading_2.json; sourceTree = "<group>"; };
+		B5D0EF1B2C348EE50070B60A /* Loading_Animation_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading_Animation_1.json; sourceTree = "<group>"; };
+		B5D0EF1C2C348EE50070B60A /* Loading_Animation_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading_Animation_2.json; sourceTree = "<group>"; };
+		B5D0EF1D2C348EE50070B60A /* Loading_Animation_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading_Animation_3.json; sourceTree = "<group>"; };
+		B5D0EF1E2C348EE50070B60A /* Youtube_B_Animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Youtube_B_Animation.json; sourceTree = "<group>"; };
+		B5D0EF1F2C348EE50070B60A /* Youtube_Button_Animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Youtube_Button_Animation.json; sourceTree = "<group>"; };
 		B5DD1C922C344B14003893FE /* TMDB_UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDB_UIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5DD1C952C344B14003893FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5DD1C972C344B14003893FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,9 +73,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5D0EF152C348C720070B60A /* Kingfisher in Frameworks */,
 				B5D0EF042C3484F10070B60A /* Alamofire in Frameworks */,
 				B5D0EF012C3484E90070B60A /* SwiftyJSON in Frameworks */,
-				B5D0EF0B2C34893B0070B60A /* Lottie in Frameworks */,
+				B5D0EF122C348C080070B60A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +86,7 @@
 		B5D0EF052C34883F0070B60A /* General */ = {
 			isa = PBXGroup;
 			children = (
+				B5D0EEF42C346B680070B60A /* MoviesViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -70,8 +95,26 @@
 			isa = PBXGroup;
 			children = (
 				B5D0EF072C3488670070B60A /* SearchBarView.swift */,
+				B5D0EF0C2C348B890070B60A /* MoviesTableView.swift */,
+				B5D0EF0E2C348BC60070B60A /* MovieTableViewCell.swift */,
+				B5D0EF162C348D930070B60A /* PosterCellView.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		B5D0EF202C348EE50070B60A /* LottieFiles */ = {
+			isa = PBXGroup;
+			children = (
+				B5D0EF182C348EE50070B60A /* Animation_3.json */,
+				B5D0EF192C348EE50070B60A /* Loading_1.json */,
+				B5D0EF1A2C348EE50070B60A /* Loading_2.json */,
+				B5D0EF1B2C348EE50070B60A /* Loading_Animation_1.json */,
+				B5D0EF1C2C348EE50070B60A /* Loading_Animation_2.json */,
+				B5D0EF1D2C348EE50070B60A /* Loading_Animation_3.json */,
+				B5D0EF1E2C348EE50070B60A /* Youtube_B_Animation.json */,
+				B5D0EF1F2C348EE50070B60A /* Youtube_Button_Animation.json */,
+			);
+			path = LottieFiles;
 			sourceTree = "<group>";
 		};
 		B5DD1C892C344B14003893FE = {
@@ -93,6 +136,7 @@
 		B5DD1C942C344B14003893FE /* TMDB_UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B5D0EF202C348EE50070B60A /* LottieFiles */,
 				B5DD1CAE2C344D92003893FE /* Utilities */,
 				B5DD1CAD2C344D86003893FE /* Managers */,
 				B5DD1CAC2C344D7D003893FE /* ViewModel */,
@@ -121,7 +165,6 @@
 			children = (
 				B5D0EF052C34883F0070B60A /* General */,
 				B5D0EF062C34884B0070B60A /* Base */,
-				B5D0EEF42C346B680070B60A /* MoviesViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,7 +223,8 @@
 			packageProductDependencies = (
 				B5D0EF002C3484E90070B60A /* SwiftyJSON */,
 				B5D0EF032C3484F10070B60A /* Alamofire */,
-				B5D0EF0A2C34893B0070B60A /* Lottie */,
+				B5D0EF112C348C080070B60A /* Lottie */,
+				B5D0EF142C348C720070B60A /* Kingfisher */,
 			);
 			productName = TMDB_UIKit;
 			productReference = B5DD1C922C344B14003893FE /* TMDB_UIKit.app */;
@@ -213,7 +257,8 @@
 			packageReferences = (
 				B5D0EEFF2C3484E90070B60A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				B5D0EF022C3484F10070B60A /* XCRemoteSwiftPackageReference "Alamofire" */,
-				B5D0EF092C34893B0070B60A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				B5D0EF102C348C080070B60A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				B5D0EF132C348C720070B60A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = B5DD1C932C344B14003893FE /* Products */;
 			projectDirPath = "";
@@ -229,8 +274,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5D0EF272C348EE50070B60A /* Youtube_B_Animation.json in Resources */,
+				B5D0EF222C348EE50070B60A /* Loading_1.json in Resources */,
+				B5D0EF242C348EE50070B60A /* Loading_Animation_1.json in Resources */,
+				B5D0EF212C348EE50070B60A /* Animation_3.json in Resources */,
+				B5D0EF282C348EE50070B60A /* Youtube_Button_Animation.json in Resources */,
 				B5DD1C9F2C344B16003893FE /* Assets.xcassets in Resources */,
+				B5D0EF232C348EE50070B60A /* Loading_2.json in Resources */,
+				B5D0EF252C348EE50070B60A /* Loading_Animation_2.json in Resources */,
 				B5DD1CA22C344B16003893FE /* Base in Resources */,
+				B5D0EF262C348EE50070B60A /* Loading_Animation_3.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +295,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5D0EEF52C346B680070B60A /* MoviesViewController.swift in Sources */,
+				B5D0EF0D2C348B890070B60A /* MoviesTableView.swift in Sources */,
+				B5D0EF0F2C348BC60070B60A /* MovieTableViewCell.swift in Sources */,
 				B5D0EEEF2C34632F0070B60A /* MovieManager.swift in Sources */,
+				B5D0EF172C348D930070B60A /* PosterCellView.swift in Sources */,
 				B5D0EEF12C3463EA0070B60A /* K+Strings.swift in Sources */,
 				B5DD1C9A2C344B14003893FE /* ViewController.swift in Sources */,
 				B5D0EF082C3488670070B60A /* SearchBarView.swift in Sources */,
@@ -497,12 +553,20 @@
 				minimumVersion = 5.9.1;
 			};
 		};
-		B5D0EF092C34893B0070B60A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		B5D0EF102C348C080070B60A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.4.3;
+			};
+		};
+		B5D0EF132C348C720070B60A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -518,10 +582,15 @@
 			package = B5D0EF022C3484F10070B60A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		B5D0EF0A2C34893B0070B60A /* Lottie */ = {
+		B5D0EF112C348C080070B60A /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B5D0EF092C34893B0070B60A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = B5D0EF102C348C080070B60A /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		B5D0EF142C348C720070B60A /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5D0EF132C348C720070B60A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
