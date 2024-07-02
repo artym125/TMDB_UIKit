@@ -31,6 +31,7 @@
 		B5D0EF272C348EE50070B60A /* Youtube_B_Animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D0EF1E2C348EE50070B60A /* Youtube_B_Animation.json */; };
 		B5D0EF282C348EE50070B60A /* Youtube_Button_Animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D0EF1F2C348EE50070B60A /* Youtube_Button_Animation.json */; };
 		B5D0EF2A2C3490550070B60A /* YouTubeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0EF292C3490550070B60A /* YouTubeManager.swift */; };
+		B5D0EF2C2C3492730070B60A /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0EF2B2C3492730070B60A /* MovieDetailViewController.swift */; };
 		B5DD1C962C344B14003893FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD1C952C344B14003893FE /* AppDelegate.swift */; };
 		B5DD1C982C344B14003893FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD1C972C344B14003893FE /* SceneDelegate.swift */; };
 		B5DD1C9A2C344B14003893FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD1C992C344B14003893FE /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 		B5D0EF1E2C348EE50070B60A /* Youtube_B_Animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Youtube_B_Animation.json; sourceTree = "<group>"; };
 		B5D0EF1F2C348EE50070B60A /* Youtube_Button_Animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Youtube_Button_Animation.json; sourceTree = "<group>"; };
 		B5D0EF292C3490550070B60A /* YouTubeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeManager.swift; sourceTree = "<group>"; };
+		B5D0EF2B2C3492730070B60A /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		B5DD1C922C344B14003893FE /* TMDB_UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDB_UIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5DD1C952C344B14003893FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5DD1C972C344B14003893FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				B5D0EEF42C346B680070B60A /* MoviesViewController.swift */,
+				B5D0EF2B2C3492730070B60A /* MovieDetailViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				B5D0EEEF2C34632F0070B60A /* MovieManager.swift in Sources */,
 				B5D0EF172C348D930070B60A /* PosterCellView.swift in Sources */,
 				B5D0EEF12C3463EA0070B60A /* K+Strings.swift in Sources */,
+				B5D0EF2C2C3492730070B60A /* MovieDetailViewController.swift in Sources */,
 				B5DD1C9A2C344B14003893FE /* ViewController.swift in Sources */,
 				B5D0EF2A2C3490550070B60A /* YouTubeManager.swift in Sources */,
 				B5D0EF082C3488670070B60A /* SearchBarView.swift in Sources */,
