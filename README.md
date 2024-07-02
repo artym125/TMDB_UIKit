@@ -37,9 +37,9 @@ Enter the relevant API keys to run the project.
 enum K {
     enum Strings: String {
         //MARK: - TMDB API -
-        case api_tmdb = "bb9c069111acd5473e4758216e2ce841"
+        case api_tmdb = ""
         //MARK: - YOUTUBE API -
-        case api_youtube = "AIzaSyC2v6mwAnjiQ9xPFHcLzxMaqiKqU2Wv-4g"
+        case api_youtube = ""
 }
 ```
 ## Screenshots ##
