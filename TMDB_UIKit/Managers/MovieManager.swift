@@ -17,7 +17,7 @@ class MovieManager {
         guard !isFetching else { return }
         isFetching = true
         
-        let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&page=\(page)"
+        let urlString = "\(Constants.baseURL)/movie/popular?api_key=\(apiKey)&page=\(page)"
         fetchMovies(urlString: urlString, completion: completion)
     }
     
@@ -25,13 +25,13 @@ class MovieManager {
         guard !isFetching else { return }
         isFetching = true
         
-        let urlString = "https://api.themoviedb.org/3/discover/movie?api_key=\(apiKey)&with_genres=\(genreID)&page=\(page)"
+        let urlString = "\(Constants.baseURL)/discover/movie?api_key=\(apiKey)&with_genres=\(genreID)&page=\(page)"
         fetchMovies(urlString: urlString, completion: completion)
     }
     
     private func fetchMovies(urlString: String, completion: @escaping (Result<[Movie], Error>) -> Void) {
         guard let url = URL(string: urlString) else {
-            completion(.failure(NSError(domain: "MovieManager", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+            completion(.failure(NSError(domain: Constants.errorDomain, code: 0, userInfo: [NSLocalizedDescriptionKey: Constants.invalidURLError])))
             return
         }
         
@@ -54,8 +54,18 @@ extension MovieManager {
         isFetching = true
         
         let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let urlString = "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&query=\(encodedQuery)"
+        let urlString = "\(Constants.baseURL)/search/movie?api_key=\(apiKey)&query=\(encodedQuery)"
         fetchMovies(urlString: urlString, completion: completion)
     }
+}
+
+extension MovieManager {
     
+    // MARK: - Constants
+    
+    enum Constants {
+        static let baseURL = "https://api.themoviedb.org/3"
+        static let errorDomain = "MovieManager"
+        static let invalidURLError = "Invalid URL"
+    }
 }

@@ -26,7 +26,7 @@ class MovieTableViewCell: UITableViewCell {
     }()
     
     private let loadingAnimationView: LottieAnimationView = {
-        let animationView = LottieAnimationView(name: "Loading_Animation_2")
+        let animationView = LottieAnimationView(name: Constants.loadingAnimationName)
         animationView.loopMode = .loop
         animationView.translatesAutoresizingMaskIntoConstraints = false
         return animationView
@@ -51,52 +51,48 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(R.Strings.fatalErrorMessage.value)
     }
     
     // MARK: - Setup
     
     private func setupSubviews() {
         contentView.addSubview(customImageView)
-//        contentView.addSubview(activityIndicator)
         contentView.addSubview(loadingAnimationView)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            customImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-                        customImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-                        customImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-                        customImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-                        customImageView.heightAnchor.constraint(equalToConstant: 200),
+            customImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.padding),
+            customImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.padding),
+            customImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.padding),
+            customImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.padding),
+            customImageView.heightAnchor.constraint(equalToConstant: Constants.imageViewHeight),
                         
-                        loadingAnimationView.centerXAnchor.constraint(equalTo: customImageView.centerXAnchor),
-                        loadingAnimationView.centerYAnchor.constraint(equalTo: customImageView.centerYAnchor),
-                        loadingAnimationView.widthAnchor.constraint(equalToConstant: 200),
-                        loadingAnimationView.heightAnchor.constraint(equalToConstant: 200)
+            loadingAnimationView.centerXAnchor.constraint(equalTo: customImageView.centerXAnchor),
+            loadingAnimationView.centerYAnchor.constraint(equalTo: customImageView.centerYAnchor),
+            loadingAnimationView.widthAnchor.constraint(equalToConstant: Constants.animationSize),
+            loadingAnimationView.heightAnchor.constraint(equalToConstant: Constants.animationSize)
         ])
     }
     
     private func setupShadow() {
         customImageView.layer.shadowColor = UIColor.black.cgColor
-        customImageView.layer.shadowOpacity = 0.9
-        customImageView.layer.shadowOffset = CGSize(width: 1, height: 7)
-        customImageView.layer.shadowRadius = 7
+        customImageView.layer.shadowOpacity = Constants.shadowOpacity
+        customImageView.layer.shadowOffset = Constants.shadowOffset
+        customImageView.layer.shadowRadius = Constants.shadowRadius
         customImageView.layer.masksToBounds = false
     }
     
     // MARK: - Configuration
     
     func configure(with movie: Movie) {
-//        loadingAnimationView.isHidden = false
-//                    loadingAnimationView.play()
-        
-        
-        if let posterPath = movie.posterPath, let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)") {
+
+        if let posterPath = movie.posterPath, let imageUrl = URL(string: "\(Constants.imageBaseUrl)\(posterPath)") {
             customImageView.imageView.kf.setImage(
                 with: imageUrl,
                 placeholder: nil,
-                options: [.transition(.fade(0.2)), .cacheOriginalImage]
+                options: [.transition(.fade(Constants.imageFadeDuration)), .cacheOriginalImage]
             ) { [weak self] result in
                 switch result {
                 case .success:
@@ -117,12 +113,12 @@ class MovieTableViewCell: UITableViewCell {
             } else {
                 loadingAnimationView.stop()
                 loadingAnimationView.isHidden = true
-                customImageView.imageView.image = UIImage(named: "NoImage")
+                customImageView.imageView.image = UIImage(named: Constants.noImageName)
             }
         }
         
         customImageView.topTextLabel.text = movie.title
-        customImageView.randomTextLabel.text = String(movie.releaseDate.prefix(4))
+        customImageView.randomTextLabel.text = String(movie.releaseDate.prefix(Constants.releaseDatePrefixLength))
         customImageView.bottomLeftTextLabel.text = movie.genreIDs.compactMap { MovieGenre(rawValue: $0)?.name }.joined(separator: ", ")
         customImageView.bottomRightTextLabel.text = String(format: "%.1f", movie.voteAverage)
     }
@@ -140,14 +136,16 @@ extension MovieTableViewCell {
     // MARK: - Constants
     
     enum Constants {
-        static let imageName = "image_1"
-        static let imageViewHeight: CGFloat = 300
-        static let imageCornerRadius: CGFloat = 20
-        static let backgroundCornerRadius: CGFloat = 15
-        static let labelFontSize: CGFloat = 16
-        static let padding: CGFloat = 16
-        static let textPadding: CGFloat = 16
-        static let labelPadding: CGFloat = 8
+        static let padding: CGFloat = 10
+        static let imageViewHeight: CGFloat = 200
+        static let animationSize: CGFloat = 200
+        static let shadowOpacity: Float = 0.9
+        static let shadowOffset = CGSize(width: 1, height: 7)
+        static let shadowRadius: CGFloat = 7
+        static let loadingAnimationName = "Loading_Animation_2"
+        static let imageBaseUrl = "https://image.tmdb.org/t/p/w500"
+        static let imageFadeDuration: TimeInterval = 0.2
+        static let noImageName = "NoImage"
+        static let releaseDatePrefixLength = 4
     }
 }
-

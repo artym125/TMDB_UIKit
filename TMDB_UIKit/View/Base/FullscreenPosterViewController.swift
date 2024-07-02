@@ -17,7 +17,7 @@ class FullscreenPosterViewController: UIViewController, UIScrollViewDelegate {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(R.Strings.fatalErrorMessage.value)
     }
 
     override func viewDidLoad() {
@@ -25,8 +25,8 @@ class FullscreenPosterViewController: UIViewController, UIScrollViewDelegate {
         view.backgroundColor = .black
 
         scrollView.delegate = self
-        scrollView.minimumZoomScale = 1.0
-        scrollView.maximumZoomScale = 5.0
+        scrollView.minimumZoomScale = Constants.minimumZoomScale
+        scrollView.maximumZoomScale = Constants.maximumZoomScale
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         view.addSubview(scrollView)
@@ -35,7 +35,7 @@ class FullscreenPosterViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(imageView)
 
         let closeButton = UIButton(type: .system)
-        closeButton.setTitle("Close", for: .normal)
+        closeButton.setTitle(R.Strings.close_button_title.value, for: .normal)
         closeButton.addTarget(self, action: #selector(closeFullscreen), for: .touchUpInside)
         closeButton.tintColor = .white
         view.addSubview(closeButton)
@@ -56,8 +56,8 @@ class FullscreenPosterViewController: UIViewController, UIScrollViewDelegate {
             imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             imageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.buttonTopPadding),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: Constants.buttonTrailingPadding)
         ])
     }
 
@@ -67,5 +67,17 @@ class FullscreenPosterViewController: UIViewController, UIScrollViewDelegate {
 
     @objc private func closeFullscreen() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension FullscreenPosterViewController {
+    
+    // MARK: - Constants
+    
+    enum Constants {
+        static let minimumZoomScale: CGFloat = 1.0
+        static let maximumZoomScale: CGFloat = 5.0
+        static let buttonTopPadding: CGFloat = 16
+        static let buttonTrailingPadding: CGFloat = -16
     }
 }

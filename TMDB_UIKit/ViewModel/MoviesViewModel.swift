@@ -33,7 +33,7 @@ class MoviesViewModel {
                     self?.totalLoadedMovies += movies.count
                     self?.onUpdate?()
                 case .failure(let error):
-                    print("Error fetching movies: \(error.localizedDescription)")
+                    print("\(R.Strings.errorFetchMovies.value) \(error.localizedDescription)")
                 }
             }
         } else {
@@ -45,7 +45,7 @@ class MoviesViewModel {
                     self?.totalLoadedMovies += movies.count
                     self?.onUpdate?()
                 case .failure(let error):
-                    print("Error fetching movies: \(error.localizedDescription)")
+                    print("\(R.Strings.errorFetchMovies.value) \(error.localizedDescription)")
                 }
             }
         }
@@ -70,7 +70,7 @@ class MoviesViewModel {
                     self?.totalLoadedMovies += movies.count
                     self?.onUpdate?()
                 case .failure(let error):
-                    print("Error fetching more movies: \(error.localizedDescription)")
+                    print("\(R.Strings.errorFetchMoreMovies.value) \(error.localizedDescription)")
                 }
             }
         } else {
@@ -82,7 +82,7 @@ class MoviesViewModel {
                     self?.totalLoadedMovies += movies.count
                     self?.onUpdate?()
                 case .failure(let error):
-                    print("Error fetching more movies: \(error.localizedDescription)")
+                    print("\(R.Strings.errorFetchMoreMovies.value) \(error.localizedDescription)")
                 }
             }
         }
@@ -99,7 +99,7 @@ extension MoviesViewModel {
                 self?.filteredMovies = movies
                 self?.onUpdate?()
             case .failure(let error):
-                print("Error searching movies: \(error.localizedDescription)")
+                print("\(R.Strings.errorSearchingMovies.value) \(error.localizedDescription)")
             }
         }
     }

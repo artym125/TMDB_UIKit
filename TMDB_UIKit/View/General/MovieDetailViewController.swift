@@ -23,7 +23,7 @@ class MovieDetailViewController: UIViewController {
     private let genreLabel = UILabel()
     private let ratingLabel = UILabel()
     private let countryLabel = UILabel()
-    private let playTrailerButton = LottieAnimationView(name: "Youtube_B_Animation")
+    private let playTrailerButton = LottieAnimationView(name: Constants.animationName)
     
     init(movie: Movie) {
             self.movie = movie
@@ -31,7 +31,7 @@ class MovieDetailViewController: UIViewController {
         }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(R.Strings.fatalErrorMessage.value)
     }
     
     override func viewDidLoad() {
@@ -46,29 +46,29 @@ class MovieDetailViewController: UIViewController {
     private func setupUI() {
         posterImageView.contentMode = .scaleAspectFill
         posterImageView.clipsToBounds = true
-        posterImageView.layer.cornerRadius = 15
+        posterImageView.layer.cornerRadius = Constants.cornerRadius
         view.addSubview(posterImageView)
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openPosterFullscreen))
         posterImageView.isUserInteractionEnabled = true
         posterImageView.addGestureRecognizer(tapGesture)
 
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        titleLabel.numberOfLines = 0
+        titleLabel.font = UIFont.boldSystemFont(ofSize: Constants.titleFontSize)
+        titleLabel.numberOfLines = Constants.titleNumberOfLines
         view.addSubview(titleLabel)
 
-        countryLabel.font = UIFont.systemFont(ofSize: 16)
+        countryLabel.font = UIFont.systemFont(ofSize: Constants.defaultFontSize)
         view.addSubview(countryLabel)
 
-        descriptionLabel.font = UIFont.systemFont(ofSize: 16)
-        descriptionLabel.numberOfLines = 0
+        descriptionLabel.font = UIFont.systemFont(ofSize: Constants.defaultFontSize)
+        descriptionLabel.numberOfLines = Constants.defaultNumberOfLines
         view.addSubview(descriptionLabel)
 
-        genreLabel.font = UIFont.systemFont(ofSize: 16)
-        genreLabel.numberOfLines = 0
+        genreLabel.font = UIFont.systemFont(ofSize: Constants.defaultFontSize)
+        genreLabel.numberOfLines = Constants.defaultNumberOfLines
         view.addSubview(genreLabel)
 
-        ratingLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        ratingLabel.font = UIFont.boldSystemFont(ofSize: Constants.defaultFontSize)
         view.addSubview(ratingLabel)
 
         playTrailerButton.contentMode = .scaleAspectFit
@@ -87,34 +87,34 @@ class MovieDetailViewController: UIViewController {
         playTrailerButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            posterImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            posterImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            posterImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            posterImageView.heightAnchor.constraint(equalToConstant: 200),
+            posterImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.padding),
+            posterImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            posterImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding),
+            posterImageView.heightAnchor.constraint(equalToConstant: Constants.posterHeight),
 
-            titleLabel.topAnchor.constraint(equalTo: posterImageView.bottomAnchor, constant: 16),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: posterImageView.bottomAnchor, constant: Constants.padding),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding),
 
-            countryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            countryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            countryLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            countryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.smallPadding),
+            countryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            countryLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding),
 
-            genreLabel.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: 8),
-            genreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            genreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            genreLabel.topAnchor.constraint(equalTo: countryLabel.bottomAnchor, constant: Constants.smallPadding),
+            genreLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            genreLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding),
 
-            playTrailerButton.topAnchor.constraint(equalTo: genreLabel.bottomAnchor, constant: 8),
-            playTrailerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            playTrailerButton.widthAnchor.constraint(equalToConstant: 100),
-            playTrailerButton.heightAnchor.constraint(equalToConstant: 100),
+            playTrailerButton.topAnchor.constraint(equalTo: genreLabel.bottomAnchor, constant: Constants.smallPadding),
+            playTrailerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.zero),
+            playTrailerButton.widthAnchor.constraint(equalToConstant: Constants.playButtonSize),
+            playTrailerButton.heightAnchor.constraint(equalToConstant: Constants.playButtonSize),
 
             ratingLabel.centerYAnchor.constraint(equalTo: playTrailerButton.centerYAnchor),
-            ratingLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            ratingLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding),
 
-            descriptionLabel.topAnchor.constraint(equalTo: playTrailerButton.bottomAnchor, constant: 0),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            descriptionLabel.topAnchor.constraint(equalTo: playTrailerButton.bottomAnchor, constant: Constants.zero),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding)
         ])
     }
 
@@ -127,19 +127,19 @@ class MovieDetailViewController: UIViewController {
     private func configureUI() {
         guard let movie = movie else { return }
 
-        if let posterPath = movie.posterPath, let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)") {
+        if let posterPath = movie.posterPath, let url = URL(string: "\(Constants.imageBaseUrl)\(posterPath)") {
             posterImageView.kf.setImage(with: url)
         }
 
         titleLabel.text = movie.title
         descriptionLabel.text = movie.overview
-        ratingLabel.text = "Rating: \(String(format: "%.1f", movie.voteAverage))"
+        ratingLabel.text = "\(R.Strings.ratingTitle.value) \(String(format: "%.1f", movie.voteAverage))"
         genreLabel.text = movie.genreIDs.compactMap { MovieGenre(rawValue: $0)?.name }.joined(separator: ", ")
 
         if let movieCountry = MovieLanguage.from(code: movie.country) {
-            countryLabel.text = "\(movieCountry.name), \(movie.releaseDate.prefix(4))"
+            countryLabel.text = "\(movieCountry.name), \(movie.releaseDate.prefix(Constants.movieReleaseDatePrefix))"
         } else {
-            countryLabel.text = "\(movie.country), \(movie.releaseDate.prefix(4))"
+            countryLabel.text = "\(movie.country), \(movie.releaseDate.prefix(Constants.movieReleaseDatePrefix))"
         }
 
         let youTubeService = YouTubeManager()
@@ -166,7 +166,7 @@ class MovieDetailViewController: UIViewController {
     private func showOverlay() {
         overlayView = UIView()
         overlayView?.isHidden = true
-        overlayView?.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        overlayView?.backgroundColor = UIColor.black.withAlphaComponent(Constants.overlayAlpha)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOverlay))
         overlayView?.addGestureRecognizer(tapGesture)
         view.addSubview(overlayView!)
@@ -182,15 +182,15 @@ class MovieDetailViewController: UIViewController {
     private func loadWebView(with embedURL: String) {
         webView = WKWebView()
         webView?.isHidden = true
-        webView?.layer.cornerRadius = 20
+        webView?.layer.cornerRadius = Constants.webViewCornerRadius
         view.addSubview(webView!)
 
         webView?.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             webView!.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            webView!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            webView!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            webView!.heightAnchor.constraint(equalToConstant: 400)
+            webView!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.padding),
+            webView!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.padding),
+            webView!.heightAnchor.constraint(equalToConstant: Constants.webViewHeight)
         ])
 
         webView?.isHidden = false
@@ -198,7 +198,7 @@ class MovieDetailViewController: UIViewController {
         let request = URLRequest(url: URL(string: embedURL)!)
         webView?.load(request)
 
-        navigationController?.navigationBar.tintColor = .systemBlue.withAlphaComponent(0.5)
+        navigationController?.navigationBar.tintColor = UIColor.systemBlue.withAlphaComponent(Constants.tintAlpha)
     }
 
     @objc private func handleTapOverlay() {
@@ -207,3 +207,30 @@ class MovieDetailViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .systemBlue
     }
 }
+
+extension MovieDetailViewController {
+    
+    // MARK: - Constants
+    
+    enum Constants {
+        static let zero: CGFloat = 0
+        static let one: CGFloat = 1
+        static let padding: CGFloat = 16
+        static let smallPadding: CGFloat = 8
+        static let cornerRadius: CGFloat = 15
+        static let titleFontSize: CGFloat = 24
+        static let movieReleaseDatePrefix: Int = 4
+        static let defaultFontSize: CGFloat = 16
+        static let titleNumberOfLines: Int = 0
+        static let defaultNumberOfLines: Int = 0
+        static let posterHeight: CGFloat = 200
+        static let playButtonSize: CGFloat = 100
+        static let overlayAlpha: CGFloat = 0.7
+        static let webViewHeight: CGFloat = 400
+        static let webViewCornerRadius: CGFloat = 20
+        static let tintAlpha: CGFloat = 0.5
+        static let animationName: String = "Youtube_B_Animation"
+        static let imageBaseUrl: String = "https://image.tmdb.org/t/p/w500"
+    }
+}
+

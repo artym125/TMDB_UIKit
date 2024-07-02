@@ -31,7 +31,7 @@ class MoviesViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(R.Strings.fatalErrorMessage.value)
     }
     
     override func viewDidLoad() {
@@ -43,7 +43,7 @@ class MoviesViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        title = "Popular Movies"
+        title = R.Strings.movieVC_title.value
         navigationController?.navigationBar.prefersLargeTitles = false
         
         setupNavBarMenu()
@@ -120,7 +120,7 @@ class MoviesViewController: UIViewController {
         var actions = MovieGenre.allCases.map { genre in
             UIAction(
                 title: genre.name,
-                image: genre == selectedGenre ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle"),
+                image: genre == selectedGenre ? .checkmarkCircleFill : .checkmarkCircle,
                 handler: { [weak self] _ in
                     self?.selectedGenre = genre
                     self?.title = genre.name
@@ -131,17 +131,17 @@ class MoviesViewController: UIViewController {
         }
         
         let recommendedAction = UIAction(
-            title: "Popular Movies",
-            image: selectedGenre == nil ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle"),
+            title: R.Strings.movieVC_title.value,
+            image: selectedGenre == nil ? .checkmarkCircleFill : .checkmarkCircle,
             handler: { [weak self] _ in
                 self?.selectedGenre = nil
-                self?.title = "Popular Movies"
+                self?.title = R.Strings.movieVC_title.value
                 self?.viewModel.loadMovies()
                 self?.navigationItem.rightBarButtonItem?.menu = self?.createMenu()
             }
         )
         
-        actions.insert(recommendedAction, at: 0)
+        actions.insert(recommendedAction, at: Constants.zero)
         return UIMenu(children: actions)
     }
     
@@ -161,13 +161,13 @@ class MoviesViewController: UIViewController {
     }
     
     private func setupNavBarMenu() {
-        let menuButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.and.down.text.horizontal"), menu: createMenu())
+        let menuButton = UIBarButtonItem(image: .sortingMenuImage, menu: createMenu())
         navigationItem.rightBarButtonItem = menuButton
     }
     
     private func showOfflineAlert() {
-        let alert = UIAlertController(title: "Offline Mode", message: "You are currently offline. Please check your network connection.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        let alert = UIAlertController(title: R.Strings.alert_offline_title.value, message: R.Strings.alert_offline_message.value, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: R.Strings.alert_offline_OK.value, style: .default))
         present(alert, animated: true)
     }
 }
@@ -179,14 +179,14 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as? MovieTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.Strings.movieTableViewCellTitle.value, for: indexPath) as? MovieTableViewCell else {
             return UITableViewCell()
         }
         
         let movie = viewModel.filteredMovies[indexPath.row]
         cell.configure(with: movie)
         
-        if indexPath.row == viewModel.filteredMovies.count - 1 {
+        if indexPath.row == viewModel.filteredMovies.count - Constants.one {
             viewModel.loadMoreMoviesIfNeeded()
         }
         
@@ -203,7 +203,7 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let tableView = scrollView as? UITableView else { return }
         let position = scrollView.contentOffset.y
-        if position > tableView.contentSize.height - 100 - scrollView.frame.size.height {
+        if position > tableView.contentSize.height - Constants.didScrollingPosition - scrollView.frame.size.height {
             viewModel.loadMoreMoviesIfNeeded()
         }
     }
@@ -213,7 +213,7 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - UISearchBarDelegate
 extension MoviesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        title = searchText.isEmpty ? "Popular Movies" : searchText
+        title = searchText.isEmpty ? R.Strings.movieVC_title.value : searchText
         updateCancelButtonVisibility()
         if searchText.isEmpty {
             viewModel.loadMovies(genreID: selectedGenre)
@@ -247,14 +247,14 @@ extension MoviesViewController: UISearchBarDelegate {
         searchBarView.searchBar.text = nil
         searchBarView.searchBar.resignFirstResponder()
         viewModel.loadMovies(genreID: selectedGenre)
-        title = "Popular Movies"
+        title = R.Strings.movieVC_title.value
         setupNavBarMenu()
         disableNavBarMenu()
     }
     
     private func updateCancelButtonVisibility() {
         if let searchText = searchBarView.searchBar.text, !searchText.isEmpty {
-            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelSearch))
+            let cancelButton = UIBarButtonItem(title: R.Strings.cancel_button_title.value, style: .plain, target: self, action: #selector(cancelSearch))
             cancelButton.tintColor = .red
             navigationItem.rightBarButtonItem = cancelButton
         } else {
@@ -267,5 +267,16 @@ extension MoviesViewController: UISearchBarDelegate {
         if !networkMonitor.isActive {
             navigationItem.rightBarButtonItem?.isEnabled = false
         }
+    }
+}
+
+extension MoviesViewController {
+    
+    // MARK: - Constants
+    
+    enum Constants {
+        static let zero: Int = 0
+        static let one: Int = 1
+        static let didScrollingPosition: CGFloat = 100
     }
 }
