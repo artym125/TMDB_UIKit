@@ -8,6 +8,7 @@
 import Foundation
 
 enum MovieGenre: Int, CaseIterable {
+    
     case action = 28
     case adventure = 12
     case animation = 16
@@ -28,7 +29,9 @@ enum MovieGenre: Int, CaseIterable {
     case war = 10752
     case western = 37
     
+    
     var name: String {
+        
         switch self {
         case .action: return "Action"
         case .adventure: return "Adventure"
@@ -49,6 +52,7 @@ enum MovieGenre: Int, CaseIterable {
         case .thriller: return "Thriller"
         case .war: return "War"
         case .western: return "Western"
+            
         }
     }
 }
