@@ -46,3 +46,16 @@ class MovieManager {
         }
     }
 }
+
+extension MovieManager {
+    
+    func searchMovies(query: String, completion: @escaping (Result<[Movie], Error>) -> Void) {
+        guard !isFetching else { return }
+        isFetching = true
+        
+        let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let urlString = "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&query=\(encodedQuery)"
+        fetchMovies(urlString: urlString, completion: completion)
+    }
+    
+}

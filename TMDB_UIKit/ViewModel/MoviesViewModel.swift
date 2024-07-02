@@ -8,6 +8,7 @@
 import Foundation
 
 class MoviesViewModel {
+    
     private let movieService = MovieManager()
     private var currentPage = 1
     private var totalLoadedMovies = 0
@@ -86,4 +87,21 @@ class MoviesViewModel {
             }
         }
     }
+}
+
+extension MoviesViewModel {
+    
+    func searchMovies(query: String) {
+        movieService.searchMovies(query: query) { [weak self] result in
+            switch result {
+            case .success(let movies):
+                self?.movies = movies
+                self?.filteredMovies = movies
+                self?.onUpdate?()
+            case .failure(let error):
+                print("Error searching movies: \(error.localizedDescription)")
+            }
+        }
+    }
+    
 }
