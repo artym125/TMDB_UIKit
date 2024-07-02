@@ -12,6 +12,7 @@ import Lottie
 class MoviesViewController: UIViewController {
     private let viewModel: MoviesViewModel
     private let networkMonitor: NetworkMonitor
+    private let searchBarView = SearchBarView()
     private let moviesTableView = MoviesTableView()
     private var selectedGenre: MovieGenre?
     
@@ -45,6 +46,7 @@ class MoviesViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         
         setupNavBarMenu()
+        setupSearchBar()
         setupTableView()
         setupNetworkMonitor()
         setupTapGesture()
@@ -59,6 +61,18 @@ class MoviesViewController: UIViewController {
         }
     }
     
+    private func setupSearchBar() {
+        searchBarView.searchBar.delegate = self
+        view.addSubview(searchBarView)
+        
+        searchBarView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            searchBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
     private func setupTableView() {
         moviesTableView.tableView.delegate = self
         moviesTableView.tableView.dataSource = self
@@ -66,7 +80,7 @@ class MoviesViewController: UIViewController {
         
         moviesTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            moviesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            moviesTableView.topAnchor.constraint(equalTo: searchBarView.bottomAnchor),
             moviesTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             moviesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             moviesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -131,6 +145,11 @@ class MoviesViewController: UIViewController {
     }
     
     @objc private func refreshMovies() {
+        guard let query = searchBarView.searchBar.text, query.isEmpty else {
+            moviesTableView.refreshControl.endRefreshing()
+            return
+        }
+        
         guard networkMonitor.isActive else {
             showOfflineAlert()
             moviesTableView.refreshControl.endRefreshing()
@@ -185,6 +204,67 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
         let position = scrollView.contentOffset.y
         if position > tableView.contentSize.height - 100 - scrollView.frame.size.height {
             viewModel.loadMoreMoviesIfNeeded()
+        }
+    }
+
+}
+
+// MARK: - UISearchBarDelegate
+extension MoviesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        title = searchText.isEmpty ? "Popular Movies" : searchText
+        updateCancelButtonVisibility()
+        if searchText.isEmpty {
+            viewModel.loadMovies(genreID: selectedGenre)
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        updateCancelButtonVisibility()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchBar.text?.isEmpty == true {
+            setupNavBarMenu()
+            viewModel.loadMovies(genreID: selectedGenre)
+            disableNavBarMenu()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard networkMonitor.isActive else {
+            showOfflineAlert()
+            return
+        }
+        
+        guard let query = searchBar.text, !query.isEmpty else { return }
+        viewModel.searchMovies(query: query)
+        searchBar.resignFirstResponder()
+    }
+    
+    @objc private func cancelSearch() {
+        searchBarView.searchBar.text = nil
+        searchBarView.searchBar.resignFirstResponder()
+        viewModel.loadMovies(genreID: selectedGenre)
+        title = "Popular Movies"
+        setupNavBarMenu()
+        disableNavBarMenu()
+    }
+    
+    private func updateCancelButtonVisibility() {
+        if let searchText = searchBarView.searchBar.text, !searchText.isEmpty {
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelSearch))
+            cancelButton.tintColor = .red
+            navigationItem.rightBarButtonItem = cancelButton
+        } else {
+            setupNavBarMenu()
+            disableNavBarMenu()
+        }
+    }
+    
+    private func disableNavBarMenu() {
+        if !networkMonitor.isActive {
+            navigationItem.rightBarButtonItem?.isEnabled = false
         }
     }
 }
