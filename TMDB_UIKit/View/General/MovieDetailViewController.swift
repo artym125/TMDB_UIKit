@@ -119,7 +119,9 @@ class MovieDetailViewController: UIViewController {
     }
 
     @objc private func openPosterFullscreen() {
-
+        guard let movie = movie, let posterImage = posterImageView.image else { return }
+        let fullscreenVC = FullscreenPosterViewController(image: posterImage)
+        present(fullscreenVC, animated: true, completion: nil)
     }
 
     private func configureUI() {
