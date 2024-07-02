@@ -21,11 +21,11 @@ class MoviesTableView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(R.Strings.fatalErrorMessage.value)
     }
 
     private func setupTableView() {
-        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: "MovieTableViewCell")
+        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: R.Strings.movieTableViewCellTitle.value)
         addSubview(tableView)
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +38,7 @@ class MoviesTableView: UIView {
     }
 
     private func setupRefreshControl() {
-        lottieView = LottieAnimationView(name: "Animation_3")
+        lottieView = LottieAnimationView(name: Constants.lottieAnimation)
         lottieView.contentMode = .scaleAspectFit
         lottieView.loopMode = .loop
         lottieView.play()
@@ -47,10 +47,10 @@ class MoviesTableView: UIView {
         lottieContainer.addSubview(lottieView)
         lottieView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            lottieView.centerXAnchor.constraint(equalTo: lottieContainer.centerXAnchor, constant: 37),
-            lottieView.centerYAnchor.constraint(equalTo: lottieContainer.centerYAnchor, constant: 10),
-            lottieView.widthAnchor.constraint(equalToConstant: 100),
-            lottieView.heightAnchor.constraint(equalToConstant: 100)
+            lottieView.centerXAnchor.constraint(equalTo: lottieContainer.centerXAnchor, constant: Constants.lottieViewCenterX),
+            lottieView.centerYAnchor.constraint(equalTo: lottieContainer.centerYAnchor, constant: Constants.lottieViewCenterY),
+            lottieView.widthAnchor.constraint(equalToConstant: Constants.lottieViewSize),
+            lottieView.heightAnchor.constraint(equalToConstant: Constants.lottieViewSize)
         ])
 
         refreshControl.addSubview(lottieContainer)
@@ -58,4 +58,18 @@ class MoviesTableView: UIView {
         refreshControl.tintColor = .clear
         tableView.refreshControl = refreshControl
     }
+}
+
+extension MoviesTableView {
+    
+    // MARK: - Constants
+    
+    enum Constants {
+        static let lottieAnimation: String = "Animation_3"
+        static let lottieViewCenterX: CGFloat = 37
+        static let lottieViewCenterY: CGFloat = 10
+        static let lottieViewSize: CGFloat = 100
+
+    }
+    
 }

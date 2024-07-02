@@ -16,11 +16,11 @@ class SearchBarView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(R.Strings.fatalErrorMessage.rawValue)
     }
 
     private func setupSearchBar() {
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = R.Strings.searchTitle.value
         searchBar.sizeToFit()
         searchBar.autocorrectionType = .no
         searchBar.spellCheckingType = .no
